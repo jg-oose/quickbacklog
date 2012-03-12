@@ -44,7 +44,7 @@ class BacklogEntriesController < ApplicationController
 
     respond_to do |format|
       if @backlog_entry.save
-        format.html { redirect_to @backlog_entry, notice: 'Backlog entry was successfully created.' }
+        format.html { redirect_to backlog_entries_path, notice: 'Backlog entry was successfully created.' }
         format.json { render json: @backlog_entry, status: :created, location: @backlog_entry }
       else
         format.html { render action: "new" }
