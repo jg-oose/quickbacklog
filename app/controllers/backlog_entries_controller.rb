@@ -2,7 +2,7 @@ class BacklogEntriesController < ApplicationController
   # GET /backlog_entries
   # GET /backlog_entries.json
   def index
-    @backlog_entries = BacklogEntry.all
+    @backlog_entries = BacklogEntry.order("position")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -68,6 +68,15 @@ class BacklogEntriesController < ApplicationController
       end
     end
   end
+
+  #TODO This only works properly if all entries are present for sorting / how to support different cases?
+  def sort
+    params[:backlog_entry].each_with_index do |id, index|
+      BacklogEntry.update_all({position: index+1}, {id: id})
+    end
+    render nothing: true
+  end
+
 
   # DELETE /backlog_entries/1
   # DELETE /backlog_entries/1.json
