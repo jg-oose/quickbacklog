@@ -1,4 +1,6 @@
 QuickBacklog::Application.routes.draw do
+  resources :backlog_entries
+  root :to => 'backlog_entries#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
