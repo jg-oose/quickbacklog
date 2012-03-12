@@ -1,0 +1,17 @@
+<%= content_tag_for :li, backlog_entry do %>
+<div class="row">
+    <div class="entry_head span1">
+        <h1><span class="hash">#</span><%= backlog_entry.id %></h1>
+        <span class="size">&nbsp; <%= backlog_entry.size ? backlog_entry.size : "--" %></span>
+    </div>
+    <div class="entry_details span6">
+        <h1><%= link_to backlog_entry.title, backlog_entry_path(backlog_entry) %></h1>
+        <h2><%= link_to(icon_arrow_right + (backlog_entry.category ? backlog_entry.category : "No category given"), "#")%></h2>
+        <%= backlog_entry.description %>
+    </div>
+    <div class="entry_actions span1">
+          <%= link_to 'Edit', edit_backlog_entry_path(backlog_entry), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', backlog_entry_path(backlog_entry), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+    </div>
+</div>
+<% end %>

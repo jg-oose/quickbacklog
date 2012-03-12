@@ -1,26 +1,7 @@
 <h1>The Backlog</h1>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Created at</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @backlog_entries.each do |backlog_entry| %>
-      <tr>
-        <td><%= backlog_entry.id %></td>
-        <td><%= link_to backlog_entry.title, backlog_entry_path(backlog_entry) %></td>
-        <td><%= backlog_entry.created_at %></td>
-        <td>
-          <%= link_to 'Edit', edit_backlog_entry_path(backlog_entry), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', backlog_entry_path(backlog_entry), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<ul id="backlog_entries">
+    <%= render :partial => @backlog_entries %>
+</ul>
 
 <%= link_to 'New', new_backlog_entry_path, :class => 'btn btn-primary' %>

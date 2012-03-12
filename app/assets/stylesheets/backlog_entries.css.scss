@@ -1,3 +1,47 @@
 // Place all the styles related to the BacklogEntries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#backlog_entries {
+  list-style-type: none;
+  margin: 0 0 9px 0;
+  
+  li {
+    border-top: solid 1px #aaa;
+    margin-bottom: 12px;
+  }
+}
+
+.entry_head {
+  text-align: right;
+  h1 {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: bold;
+  }
+  .hash {
+    font-size: 60%;
+    vertical-align: super;
+  }
+  .size {
+    padding: 1px 4px 0px 4px;
+    border-top: solid 1px #000;
+  }  
+}
+
+.entry_details {
+  h1 {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  h2 {
+    font-size: 11px;
+    line-height: 12px;
+    margin-bottom: 12px;
+  }
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.entry_actions {
+  margin-top: 6px;  
+}

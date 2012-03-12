@@ -55,11 +55,12 @@
             </div>
         <% end %>
         <div class="row">
-          <div class="span9">
-            <%= yield %>
-          </div>
-          <div class="span1">&nbsp;</div>
-            <div class="span3">
+            <div class="span8">
+              <%= yield %>
+            </div>
+
+            <div class="span1">&nbsp;</div>
+            <div class="offset1 span3">
               <div class="well sidebar-nav">
                 <h3>Sidebar</h3>
                 <ul class="nav nav-list">
@@ -70,6 +71,7 @@
                 </ul>
               </div>
             </div>
+            
           </div>
         </div><!--/row-->
       </div><!--/content-->
