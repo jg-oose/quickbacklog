@@ -19,7 +19,7 @@
     <%= stylesheet_link_tag "application", :media => "all" %>
 
     <!-- Le fav and touch icons -->
-    <link href="images/favicon.ico" rel="shortcut icon">
+    <%= favicon_link_tag %>
     <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
     <link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
@@ -48,6 +48,12 @@
 
     <div class="container">
       <div class="content">
+        <% flash.each do |name, msg| %>
+            <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+                <a class="close" data-dismiss="alert">x</a>
+                <%= msg %>
+            </div>
+        <% end %>
         <div class="row">
           <div class="span9">
             <%= yield %>
