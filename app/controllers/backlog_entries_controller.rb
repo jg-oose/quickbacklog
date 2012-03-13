@@ -7,6 +7,10 @@ class BacklogEntriesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @backlog_entries }
+      format.pdf do
+        pdf = BacklogCardsPdf.new
+        pdf.build_document @backlog_entries
+        send_data pdf.render, filename: "Backlog Entries - #{Date.today}.pdf", disposition: 'inline'
     end
   end
 
@@ -18,6 +22,7 @@ class BacklogEntriesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @backlog_entry }
+      end
     end
   end
 
