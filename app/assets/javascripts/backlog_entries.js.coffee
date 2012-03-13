@@ -9,3 +9,9 @@ jQuery ->
       
 jQuery ->
   $('.best_in_place').best_in_place()
+  
+jQuery ->
+  $('#backlog_entry_category').autocomplete
+    source: $('#backlog_entry_category').data('autocomplete-source')
+    minLength: 0
+      

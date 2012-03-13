@@ -15,7 +15,8 @@
     <div class="control-group<%= " error" if @backlog_entry.errors.include?(:category) %>">
       <%= f.label :category, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :category, :class => 'text_field' %>
+        <%= f.text_field :category, :class => 'text_field',
+            data: {autocomplete_source: BacklogEntry.pluck(:category).uniq.compact} %>
         <% if @backlog_entry.errors.include?(:category) %>
             <span class="help-inline"><%= @backlog_entry.errors[:category].join(", ") %></span>
         <% end %>
