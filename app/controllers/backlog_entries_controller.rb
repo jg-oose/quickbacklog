@@ -83,10 +83,10 @@ class BacklogEntriesController < ApplicationController
     respond_to do |format|
       if @backlog_entry.update_attributes(params[:backlog_entry])
         format.html { redirect_to backlog_entries_url , notice: 'Backlog entry was successfully updated.' }
-        format.json { head :no_content }
+        format.json { respond_with_bip @backlog_entry }
       else
         format.html { render action: "edit" }
-        format.json { render json: @backlog_entry.errors, status: :unprocessable_entity }
+        format.json { respond_with_bip @backlog_entry }
       end
     end
   end
