@@ -8,7 +8,7 @@ class BacklogEntriesController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @backlog_entries }
       format.pdf do
-        pdf = BacklogCardsPdf.new
+        pdf = params[:cards] ? BacklogCardsPdf.new : BacklogListingPdf.new
         pdf.build_document @backlog_entries
         send_data pdf.render, filename: "Backlog Entries - #{Date.today}.pdf", disposition: 'inline'
     end
