@@ -2,7 +2,24 @@ class BacklogEntriesController < ApplicationController
   # GET /backlog_entries
   # GET /backlog_entries.json
   def index
-    @backlog_entries = BacklogEntry.order("position")
+    d = params[:d] || "open"
+    done_is = []
+    @ui_btn_state = {}
+
+    case d
+    when "done"
+      done_is << true
+      @ui_btn_state[:done] = "disabled"
+    when "all"
+      done_is << false
+      done_is << true
+      @ui_btn_state[:all] = "disabled"
+    else # "open" or rubbish
+      done_is << false
+      @ui_btn_state[:open] = "disabled"
+    end
+    
+    @backlog_entries = BacklogEntry.where(:done => done_is).order("position")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -65,7 +82,7 @@ class BacklogEntriesController < ApplicationController
 
     respond_to do |format|
       if @backlog_entry.update_attributes(params[:backlog_entry])
-        format.html { redirect_to @backlog_entry, notice: 'Backlog entry was successfully updated.' }
+        format.html { redirect_to backlog_entries_url , notice: 'Backlog entry was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -42,6 +42,14 @@
       </div>
     </div>
 
+    <div class="control-group">
+      <div class="controls">
+        <%= f.label :done, :class => 'checkbox inline' do %>
+            <%= f.check_box :done, :class => 'checkbox' %> Done
+        <% end %>
+      </div>
+    </div>
+
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to 'Cancel', backlog_entries_path, :class => 'btn' %>

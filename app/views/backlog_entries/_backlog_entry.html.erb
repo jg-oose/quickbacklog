@@ -10,6 +10,12 @@
         <%= backlog_entry.description %>
     </div>
     <div class="entry_actions span1">
+          <% if backlog_entry.done %>
+              <span class="label">done</span>
+          <% else %>
+              <span class="label label-info">open</span>
+          <% end %>
+          <p>&nbsp;</p>
           <%= link_to 'Edit', edit_backlog_entry_path(backlog_entry), :class => 'btn btn-mini' %>
           <%= link_to 'Destroy', backlog_entry_path(backlog_entry), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
     </div>

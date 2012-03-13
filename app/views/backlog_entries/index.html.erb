@@ -8,6 +8,11 @@
         <% end %>
     </div>
     <div class="btn-group">
+        <%= link_to "open", backlog_entries_path(:d => "open"), :class => "btn #{@ui_btn_state[:open]}" %>
+        <%= link_to "done", backlog_entries_path(:d => "done"), :class => "btn #{@ui_btn_state[:done]}" %>
+        <%= link_to "all", backlog_entries_path(:d => "all"), :class => "btn #{@ui_btn_state[:all]}" %>
+    </div>
+    <div class="btn-group">
         <%= link_to backlog_entries_path, :class => "btn" do %>
                 <i class="icon-refresh" ></i>
         <% end %>
