@@ -3,4 +3,8 @@ class Project < ActiveRecord::Base
   serialize :estimation_scale, Hash
 
   validates :name, :presence => true 
+  
+  def new_backlog_entry_from_template
+    backlog_entries.build(:description => self.entry_template_text)
+  end
 end

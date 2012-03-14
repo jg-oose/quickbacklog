@@ -46,7 +46,7 @@ class BacklogEntriesController < ApplicationController
   # GET /backlog_entries/new
   # GET /backlog_entries/new.json
   def new
-    @backlog_entry = project_from_session.backlog_entries.build
+    @backlog_entry = project_from_session.new_backlog_entry_from_template
 
     respond_to do |format|
       format.html # new.html.erb
