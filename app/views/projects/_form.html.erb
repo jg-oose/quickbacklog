@@ -1,21 +1,50 @@
-<%= form_for(@project, :url => project_path) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+<%= form_for(@project, :url => project_path, :html => { :class => 'form-horizontal' } ) do |f| %>
+<fieldset>
+    <legend><%= controller.action_name.capitalize %> Project</legend>
+
+    <div class="control-group<%= " error" if @project.errors.include?(:name) %>">
+      <%= f.label :name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :name, :class => 'text_field' %>
+        <% if @project.errors.include?(:name) %>
+            <span class="help-inline"><%= @project.errors[:name].join(", ") %></span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="control-group<%= " error" if @project.errors.include?(:vision) %>">
+      <%= f.label :vision, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :vision, :class => 'text_field' %>
+        <% if @project.errors.include?(:vision) %>
+            <span class="help-inline"><%= @project.errors[:vision].join(", ") %></span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="control-group<%= " error" if @project.errors.include?(:entry_template_text) %>">
+      <%= f.label :entry_template_text, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :entry_template_text, :class => 'text_field' %>
+        <% if @project.errors.include?(:entry_template_text) %>
+            <span class="help-inline"><%= @project.errors[:entry_template_text].join(", ") %></span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="control-group<%= " error" if @project.errors.include?(:scale_textline) %>">
+      <%= f.label :scale_textline, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :scale_textline, :class => 'text_field' %>
+        <% if @project.errors.include?(:scale_textline) %>
+            <span class="help-inline"><%= @project.errors[:scale_textline].join(", ") %></span>
+        <% end %>
+      </div>
+    </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
   </div>
-  <div class="field">
-    <%= f.label :vision %><br />
-    <%= f.text_area :vision %>
-  </div>
-  <div class="field">
-    <%= f.label :entry_template_text %><br />
-    <%= f.text_area :entry_template_text %>
-  </div>
-  <div class="field">
-    <%= f.label :size_scale %><br />
-    <%= f.text_area :size_scale %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+<fieldset>
 <% end %>
