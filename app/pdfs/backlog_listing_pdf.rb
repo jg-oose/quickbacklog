@@ -52,7 +52,7 @@ private
   
   def draw_id entry
     fill_color COLOR_TITLE
-    text "##{entry.id}99", align: :right, size: 16, style: :bold
+    text "<sup>#</sup>#{entry.id}", inline_format: true, align: :right, size: 16, style: :bold
   end
   
   def draw_estimate entry
