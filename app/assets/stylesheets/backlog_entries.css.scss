@@ -29,17 +29,38 @@
 }
 
 .entry_details {
-  h1 {
+  > h1 {
     font-size: 14px;
     line-height: 18px;
   }
-  h2 {
+  > h2 {
     font-size: 11px;
     line-height: 12px;
     margin-bottom: 12px;
   }
-  font-size: 13px;
-  line-height: 18px;
+  .description {
+    font-size: 13px;
+    line-height: 18px;
+
+    h1 {
+      font-size: 16px;
+      line-height: 18px;
+      margin-bottom: 4px;
+    }
+    h2 {
+      font-size: 14px;
+      line-height: 16px;
+      margin-bottom: 4px;
+    }
+    h3 {
+      font-size: 13px;
+      line-height: 16px;
+      margin-bottom: 2px;
+    }
+    ul {
+      margin-bottom: 6px;
+    }
+  }
 }
 
 .entry_actions {
