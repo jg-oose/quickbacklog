@@ -19,7 +19,7 @@ class BacklogEntriesController < ApplicationController
       @ui_btn_state[:open] = "disabled"
     end
     
-    @backlog_entries = BacklogEntry.where(:done => done_is).order("position")
+    @backlog_entries = project_from_session.backlog_entries.where(:done => done_is).order("position")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,7 +46,7 @@ class BacklogEntriesController < ApplicationController
   # GET /backlog_entries/new
   # GET /backlog_entries/new.json
   def new
-    @backlog_entry = BacklogEntry.new
+    @backlog_entry = project_from_session.backlog_entries.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -62,7 +62,7 @@ class BacklogEntriesController < ApplicationController
   # POST /backlog_entries
   # POST /backlog_entries.json
   def create
-    @backlog_entry = BacklogEntry.new(params[:backlog_entry])
+    @backlog_entry = project_from_session.backlog_entries.build(params[:backlog_entry])
 
     respond_to do |format|
       if @backlog_entry.save

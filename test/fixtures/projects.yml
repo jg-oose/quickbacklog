@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  vision: MyText
+  entry_template: MyText
+  size_scale: MyText
+
+two:
+  name: MyString
+  vision: MyText
+  entry_template: MyText
+  size_scale: MyText

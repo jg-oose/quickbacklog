@@ -1,0 +1,21 @@
+<%= form_for(@project, :url => project_path) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :vision %><br />
+    <%= f.text_area :vision %>
+  </div>
+  <div class="field">
+    <%= f.label :entry_template %><br />
+    <%= f.text_area :entry_template %>
+  </div>
+  <div class="field">
+    <%= f.label :size_scale %><br />
+    <%= f.text_area :size_scale %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<div class="well">
+    <h1><%= @project.name %></h1>
+    <p>
+        <%= markdown @project.vision %>
+    </p>
+</div>
+
+<%= link_to 'Edit', edit_project_path %>
