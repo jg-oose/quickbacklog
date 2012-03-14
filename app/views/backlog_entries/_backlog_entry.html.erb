@@ -7,7 +7,7 @@
     <div class="entry_details span6">
         <h1><%= link_to backlog_entry.title, backlog_entry_path(backlog_entry) %></h1>
         <h2><%= link_to(icon_arrow_right + (backlog_entry.category ? backlog_entry.category : "No category given"), "#")%></h2>
-        <%= backlog_entry.description %>
+        <div class="entry_description"><%= markdown backlog_entry.description %></div>
     </div>
     <div class="entry_actions span1">
           <%= link_to edit_backlog_entry_path(backlog_entry) do %><i class="icon-pencil"></i><% end %>
