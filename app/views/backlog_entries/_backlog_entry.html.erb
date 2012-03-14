@@ -10,10 +10,9 @@
         <%= backlog_entry.description %>
     </div>
     <div class="entry_actions span1">
-          <span class="btn btn-info btn-mini"><%= best_in_place backlog_entry, :done, type: :checkbox, collection: %w[done reopen] %></span>
-          <p>&nbsp;</p>
-          <%= link_to 'Edit', edit_backlog_entry_path(backlog_entry), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', backlog_entry_path(backlog_entry), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+          <%= link_to edit_backlog_entry_path(backlog_entry) do %><i class="icon-pencil"></i><% end %>
+          <%= link_to backlog_entry_path(backlog_entry), :method => :delete, :confirm => 'Are you sure?' do %><i class="icon-trash"></i><% end %>
+          <span class="btn btn-mini"><%= best_in_place backlog_entry, :done, type: :checkbox, collection: %w[done reopen] %></span>
     </div>
 </div>
 <% end %>
