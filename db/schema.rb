@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120314151413) do
+ActiveRecord::Schema.define(:version => 20120314160635) do
 
   create_table "backlog_entries", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.string   "category"
-    t.integer  "size"
+    t.integer  "size_val"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "position"

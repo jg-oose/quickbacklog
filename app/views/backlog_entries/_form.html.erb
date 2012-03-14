@@ -37,9 +37,7 @@
       <%= f.label :size, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :size, :class => 'text_field' %>
-        <% if @backlog_entry.errors.include?(:size) %>
-            <span class="help-inline"><%= @backlog_entry.errors[:size].join(", ") %></span>
-        <% end %>
+        <p class="help-block"><%= @backlog_entry.size_scale.keys.join(", ") %></p>
       </div>
     </div>
 
