@@ -5,7 +5,7 @@
     <div class="control-group<%= " error" if @backlog_entry.errors.include?(:title) %>">
       <%= f.label :title, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :title, :class => 'text_field' %>
+        <%= f.text_field :title, :class => 'text_field span6' %>
         <% if @backlog_entry.errors.include?(:title) %>
             <span class="help-inline"><%= @backlog_entry.errors[:title].join(", ") %></span>
         <% end %>
@@ -26,7 +26,7 @@
     <div class="control-group<%= " error" if @backlog_entry.errors.include?(:description) %>">
       <%= f.label :description, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_area :description, :class => 'text_area' %>
+        <%= f.text_area :description,  :rows => 16, :class => 'text_area span6' %>
         <% if @backlog_entry.errors.include?(:description) %>
             <span class="help-inline"><%= @backlog_entry.errors[:description].join(", ") %></span>
         <% end %>
@@ -36,7 +36,7 @@
     <div class="control-group<%= " error" if @backlog_entry.errors.include?(:size) %>">
       <%= f.label :size, :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :size, :class => 'text_field' %>
+        <%= f.text_field :size, :class => 'text_field span1' %>
         <p class="help-block"><%= @backlog_entry.size_scale.keys.join(", ") %></p>
       </div>
     </div>
