@@ -1,10 +1,13 @@
 QuickBacklog::Application.routes.draw do
-  resources :backlog_entries do
-    collection { post :sort }
+  scope "(:locale)", :locale => /de|en/ do
+    resources :backlog_entries do
+      collection { post :sort }
+    end
+    resource :project, :except => :destroy do
+    end
   end
-  resource :project, :except => :destroy do
-    
-  end
+  
+  match '/:locale' => 'backlog_entries#index'
   root :to => 'backlog_entries#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
