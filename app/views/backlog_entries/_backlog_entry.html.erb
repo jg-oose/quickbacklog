@@ -6,13 +6,13 @@
     </div>
     <div class="entry_details span6">
         <h1><%= link_to backlog_entry.title, "#", data: {toggle: "collapse", target: "#backlog_entry_#{backlog_entry.id}  .description"} %></h1>
-        <h2><%= link_to(icon_arrow_right + (backlog_entry.category ? backlog_entry.category : "No category given"), "#")%></h2>
+        <h2><%= link_to(icon_arrow_right + category_of(backlog_entry), "#")%></h2>
         <div class="description collapse in"><%= markdown backlog_entry.description %></div>
     </div>
     <div class="entry_actions span1">
           <%= link_to edit_backlog_entry_path(backlog_entry) do %><i class="icon-pencil"></i><% end %>
-          <%= link_to backlog_entry_path(backlog_entry), :method => :delete, :confirm => 'Are you sure?' do %><i class="icon-trash"></i><% end %>
-          <span class="btn btn-mini"><%= best_in_place backlog_entry, :done, type: :checkbox, collection: %w[done reopen] %></span>
+          <%= link_to backlog_entry_path(backlog_entry), :method => :delete, :confirm => t('.are_you_sure') do %><i class="icon-trash"></i><% end %>
+          <span class="btn btn-mini"><%= best_in_place backlog_entry, :done, type: :checkbox, collection: [t(".done"), t(".reopen_html")] %></span>
     </div>
 </div>
 <% end %>

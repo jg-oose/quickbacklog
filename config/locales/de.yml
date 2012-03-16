@@ -2,11 +2,18 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 de:
-  hello: "Hello world"
-  activerecord:
-    errors:
-      models:
-        backlog_entry:
-          attributes:
-            title:
-              blank:  "Diese Fehlermeldung koennte freundlicher sein"
+  layouts:
+    application:
+      Settings:  "Einstellungen"
+  backlog_entries:
+    index:
+      The_Backlog:  "Das Backlog"
+      new_entry:  "Neuer Backlogeintrag"
+      open: "offen"
+      done: "erledigt"
+      all:  "alle"
+    backlog_entry:
+      are_you_sure: "Diesen Eintrag jetzt entfernen?"
+      no_category:  "Kategorie nicht angegeben"
+      done: "erledigt"
+      reopen_html: "neu &ouml;ffnen"

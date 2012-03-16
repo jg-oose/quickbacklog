@@ -2,4 +2,18 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      Settings:  "Settings"
+  backlog_entries:
+    index:
+      The_Backlog: "The Backlog"
+      new_entry:  "New Entry"
+      open: "open"
+      done: "done"
+      all:  "all"
+    backlog_entry:
+      are_you_sure: "Delete this entry now?"
+      no_category: "category not given"
+      done: "close"
+      reopen_html: "reopen"
