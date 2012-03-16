@@ -41,9 +41,10 @@
                 <li><%= link_to t(".Settings"), edit_project_path  %></li>                
             </ul>
             <ul class="nav pull-right">
+              <li><p class="navbar-text"><%= link_to "de", url_for(:locale => "de") %> | <%= link_to "en", url_for(:locale => "en") %></p></li>
               <li>
-                <%= link_to "http://www.oose.de" do %>
-                    <%= image_tag 'oose-xs.png', :size => '42x15', :class => "site_logo"%>
+                <%= link_to "http://www.oose.de", :id => "site_logo_oose" do %>
+                    <%= image_tag 'oose-xs.png', :size => '56x20' %>
                     <% end %>
               </li>
             </ul>
