@@ -1,6 +1,6 @@
 <%= form_for @backlog_entry, :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
-    <legend><%= controller.action_name.capitalize %> Backlog Entry</legend>
+    <legend><%=t ".#{controller.action_name}", model: BacklogEntry.model_name.human %></legend>
 
     <div class="control-group<%= " error" if @backlog_entry.errors.include?(:title) %>">
       <%= f.label :title, :class => 'control-label' %>
@@ -44,14 +44,14 @@
     <div class="control-group">
       <div class="controls">
         <%= f.label :done, :class => 'checkbox inline' do %>
-            <%= f.check_box :done, :class => 'checkbox' %> Done
+            <%= f.check_box :done, :class => 'checkbox' %> <%= BacklogEntry.human_attribute_name(:done)%>
         <% end %>
       </div>
     </div>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to 'Cancel', backlog_entries_path, :class => 'btn' %>
+      <%= link_to t('cancel'), backlog_entries_path, :class => 'btn' %>
     </div>
   </fieldset>
 <% end %>

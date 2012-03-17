@@ -17,3 +17,27 @@ en:
       no_category: "category not given"
       done: "close"
       reopen_html: "reopen"
+    form:
+        new: "New %{model}"
+        edit: "Edit %{model}"
+  projects:
+    form:
+      Project_Description: "Project Description"
+      Project_Standards: "Project Standards"
+
+  activerecord:
+      models:
+        backlog_entry: "Backlog Entry"
+        project:  "Project"
+      attributes:
+        backlog_entry:
+          title:        "Title"
+          category:     "Category"
+          description:  "Description"
+          size:         "Size estimate"
+          done:         "Done"
+        project:
+          name: "Name"
+          vision: "Vision"
+          entry_template_text:  "Description Template"
+          scale_textline: "Estimation Scale"

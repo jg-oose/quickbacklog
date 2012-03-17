@@ -1,6 +1,6 @@
 <%= form_for(@project, :url => project_path, :html => { :class => 'form-horizontal' } ) do |f| %>
 <fieldset>
-    <legend>Projektbeschreibung</legend>
+    <legend><%=t ".Project_Description" %></legend>
 
     <div class="control-group<%= " error" if @project.errors.include?(:name) %>">
       <%= f.label :name, :class => 'control-label' %>
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <legend>Projektvorgaben</legend>
+    <legend><%=t ".Project_Standards" %></legend>
 
     <div class="control-group<%= " error" if @project.errors.include?(:entry_template_text) %>">
       <%= f.label :entry_template_text, :class => 'control-label' %>

@@ -12,7 +12,7 @@
     <div class="entry_actions span1">
           <%= link_to edit_backlog_entry_path(backlog_entry) do %><i class="icon-pencil"></i><% end %>
           <%= link_to backlog_entry_path(backlog_entry), :method => :delete, :confirm => t('.are_you_sure') do %><i class="icon-trash"></i><% end %>
-          <span class="btn btn-mini"><%= best_in_place backlog_entry, :done, type: :checkbox, collection: [t(".done"), t(".reopen_html")] %></span>
+          <span class="btn btn-mini"><%= best_in_place backlog_entry, :done, type: :checkbox, collection: [t(".done"), t(".reopen")] %></span>
     </div>
 </div>
 <% end %>
