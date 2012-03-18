@@ -1,0 +1,16 @@
+-> ruby installieren
+-> gem bundle
+-> bundle install
+-> rake db:... RAILS_ENV="production"
+-> (seed)
+-> rails server -e production
+
+
+
+===
+Vorbereitung des Pakets
+-> bundler
+-> bundle-package
+-> precompile
+-> einchecken / taggen
+-> paket bauen
