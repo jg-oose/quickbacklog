@@ -16,6 +16,13 @@ jQuery ->
     minLength: 0
       
 jQuery ->
+  $('.expand_desc_link').click ->
+    desc = $(this).parents('.backlog_entry').find('.description')
+    if desc.hasClass('in')
+      desc.collapse('hide')
+    else
+      desc.collapse('show')
+    return false
   $('#expand_all_btn').button('toggle')
   $('#expand_all_btn').click ->
     if $(this).hasClass('active')
