@@ -6,7 +6,7 @@
     </div>
     <div class="entry_details span6">
         <h1><%= link_to backlog_entry.title, "#", class: "expand_desc_link" %></h1>
-        <h2><%= link_to(icon_arrow_right + category_of(backlog_entry), "#")%></h2>
+        <h2><%= content_tag 'span', (icon_arrow_right + category_of(backlog_entry))%></h2>
         <div class="description collapse in"><%= markdown backlog_entry.description %></div>
     </div>
     <div class="entry_actions span1">
