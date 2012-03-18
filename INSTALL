@@ -1,7 +1,7 @@
 -> ruby installieren
 -> gem bundle
 -> bundle install
--> rake db:... RAILS_ENV="production"
+-> rake db:schema:load RAILS_ENV="production"
 -> (seed)
 -> rails server -e production
 
