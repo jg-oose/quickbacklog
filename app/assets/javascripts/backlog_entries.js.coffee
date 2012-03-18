@@ -19,6 +19,6 @@ jQuery ->
   $('#expand_all_btn').button('toggle')
   $('#expand_all_btn').click ->
     if $(this).hasClass('active')
-      $('.description').collapse('hide')
+      $('.description.in').collapse('hide')
     else
       $('.description').collapse('show')
