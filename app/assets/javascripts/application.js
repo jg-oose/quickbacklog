@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require twitter/bootstrap
+//  TODO should include individual bootstrap modules
+//= require bootstrap
 //= require best_in_place
 //= require_tree .
