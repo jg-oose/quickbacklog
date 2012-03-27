@@ -66,6 +66,7 @@ class BacklogEntriesController < ApplicationController
 
     respond_to do |format|
       if @backlog_entry.save
+        flash[:highlight] = @backlog_entry.id
         format.html { redirect_to backlog_entries_path, notice: 'Backlog entry was successfully created.' }
         format.json { render json: @backlog_entry, status: :created, location: @backlog_entry }
       else
@@ -82,7 +83,8 @@ class BacklogEntriesController < ApplicationController
 
     respond_to do |format|
       if @backlog_entry.update_attributes(params[:backlog_entry])
-        format.html { redirect_to backlog_entries_url , notice: 'Backlog entry was successfully updated.' }
+        flash[:highlight] = @backlog_entry.id
+        format.html { redirect_to backlog_entries_url, notice: 'Backlog entry was successfully updated.' }
         format.json { respond_with_bip @backlog_entry }
       else
         format.html { render action: "edit" }

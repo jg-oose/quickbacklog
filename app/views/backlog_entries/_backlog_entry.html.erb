@@ -1,4 +1,4 @@
-<%= content_tag_for :li, backlog_entry do %>
+<%= content_tag_for :li, backlog_entry, class: (backlog_entry.id == flash[:highlight] ? "highlight" : "") do %>
 <div class="row">
     <div class="entry_head span1">
         <h1><span class="hash">#</span><%= backlog_entry.id %></h1>

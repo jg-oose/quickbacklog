@@ -6,11 +6,7 @@ jQuery ->
     axis: 'y'
     update: ->
       $.post($(this).data('update-url'), $(this).sortable('serialize'))
-      
-jQuery ->
   $('.best_in_place').best_in_place()
-  
-jQuery ->
   $('#backlog_entry_category').autocomplete
     source: $('#backlog_entry_category').data('autocomplete-source')
     minLength: 0
@@ -29,3 +25,8 @@ jQuery ->
       $('.description.in').collapse('hide')
     else
       $('.description').collapse('show')
+
+jQuery ->
+  $(window).scrollTop($('.highlight').offset().top - 58)
+  $('.highlight').effect('highlight', {color: '#005d92'}, 2000)
+  
