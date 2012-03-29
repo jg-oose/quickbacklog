@@ -28,6 +28,7 @@ class BacklogEntriesController < ApplicationController
         pdf = params[:cards] ? BacklogCardsPdf.new : BacklogListingPdf.new
         pdf.build_document @backlog_entries
         send_data pdf.render, filename: "Backlog Entries - #{Date.today}.pdf", disposition: 'inline'
+      end
     end
   end
 
@@ -39,7 +40,6 @@ class BacklogEntriesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @backlog_entry }
-      end
     end
   end
 
@@ -47,7 +47,8 @@ class BacklogEntriesController < ApplicationController
   # GET /backlog_entries/new.json
   def new
     @backlog_entry = project_from_session.new_backlog_entry_from_template
-
+    @backlog_entry.cut_from = BacklogEntry.find(params[:cut_from])
+ 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @backlog_entry }
@@ -63,6 +64,7 @@ class BacklogEntriesController < ApplicationController
   # POST /backlog_entries.json
   def create
     @backlog_entry = project_from_session.backlog_entries.build(params[:backlog_entry])
+    @backlog_entry.position = @backlog_entry.cut_from.position
 
     respond_to do |format|
       if @backlog_entry.save
@@ -101,7 +103,6 @@ class BacklogEntriesController < ApplicationController
     render nothing: true
   end
 
-
   # DELETE /backlog_entries/1
   # DELETE /backlog_entries/1.json
   def destroy
@@ -113,4 +114,5 @@ class BacklogEntriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

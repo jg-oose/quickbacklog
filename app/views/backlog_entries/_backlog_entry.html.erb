@@ -6,10 +6,17 @@
     </div>
     <div class="entry_details span6">
         <h1><%= link_to backlog_entry.title, "#", class: "expand_desc_link" %></h1>
-        <h2><%= content_tag 'span', (icon_arrow_right + category_of(backlog_entry))%></h2>
+        <h2><%= content_tag 'span', (icon_arrow_right + category_of(backlog_entry))%>
+            <%= if backlog_entry.cut_from
+                    link_to backlog_entry.cut_from do
+                        icon_arrow_right + "##{backlog_entry.cut_from.id} #{backlog_entry.cut_from.title}"
+                    end
+                end
+             %></h2>
         <div class="description collapse in"><%= markdown backlog_entry.description %></div>
     </div>
     <div class="entry_actions span1">
+          <%= link_to new_backlog_entry_path(cut_from: backlog_entry.id) do %><i class="icon-plus-sign"></i><% end %>
           <%= link_to edit_backlog_entry_path(backlog_entry) do %><i class="icon-pencil"></i><% end %>
           <%= link_to backlog_entry_path(backlog_entry), :method => :delete, :confirm => t('.are_you_sure') do %><i class="icon-trash"></i><% end %>
           <span class="btn btn-mini"><%= best_in_place backlog_entry, :done, type: :checkbox, collection: [t(".done"), t(".reopen")] %></span>

@@ -1,6 +1,8 @@
 class BacklogEntry < ActiveRecord::Base
   acts_as_list
   belongs_to :project
+  has_many :cuttings, :class_name => "BacklogEntry", :foreign_key => :cut_from_id, :order => :position
+  belongs_to :cut_from, :class_name => "BacklogEntry", :foreign_key => :cut_from_id
 
   validates :title, :presence => true 
   validates :project, :presence => true
@@ -30,7 +32,7 @@ public
 
 private
   def map_size
-    self.size_val = size_scale[@size]
+    self.size_val = size_scale[@size] # TODO shouldn't that be [size]
   end
 
 end

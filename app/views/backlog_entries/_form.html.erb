@@ -2,6 +2,8 @@
   <fieldset>
     <legend><%=t ".#{controller.action_name}", model: BacklogEntry.model_name.human %></legend>
 
+    <%= f.hidden_field :cut_from_id %>
+
     <div class="control-group<%= " error" if @backlog_entry.errors.include?(:title) %>">
       <%= f.label :title, :class => 'control-label' %>
       <div class="controls">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120314160635) do
+ActiveRecord::Schema.define(:version => 20120329062213) do
 
   create_table "backlog_entries", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20120314160635) do
     t.integer  "position"
     t.boolean  "done"
     t.integer  "project_id"
+    t.integer  "cut_from_id"
   end
 
   create_table "projects", :force => true do |t|
