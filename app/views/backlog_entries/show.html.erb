@@ -1,23 +1,13 @@
-<h1>Backlog Entry</h1>
-
-<p>
-  <b>Title</b><br>
-  <%= @backlog_entry.title %>
-</p>
-
-<p>
-  <b>Description</b><br>
-  <%= @backlog_entry.description %>
-</p>
-
-<p>
-  <b>Category</b><br>
-  <%= @backlog_entry.category %>
-</p>
+<h1>#<%= @backlog_entry.id %> - <%= @backlog_entry.title %></h1>
+<h4><%= icon_arrow_right + category_of(@backlog_entry) %></h4>
 
 <p>
   <b>Size</b><br>
   <%= @backlog_entry.size %>
+</p>
+
+<p>
+  <%= markdown @backlog_entry.description %>
 </p>
 
 <div class="form-actions">
@@ -25,3 +15,7 @@
   <%= link_to 'Edit', edit_backlog_entry_path(@backlog_entry), :class => 'btn' %>
   <%= link_to 'Delete', backlog_entry_path(@backlog_entry), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
 </div>
+
+<% content_for :sidebar do %>
+    <%= render "related_entries" %>    
+<% end %>

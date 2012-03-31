@@ -4,9 +4,12 @@
 @import "bootstrap";
 
 .sidebar-nav {
-  visibility: hidden;
+//  visibility: hidden;
 }
 
+a.done {
+ text-decoration: line-through; 
+}
 
 #site_logo_oose {
 //  background-color: #aaa;

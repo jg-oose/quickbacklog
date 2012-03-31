@@ -12,7 +12,10 @@
                         icon_arrow_right + "##{backlog_entry.cut_from.id} #{backlog_entry.cut_from.title}"
                     end
                 end
-             %></h2>
+             %>
+            <%= conjoined_line backlog_entry.conjoined_cuttings %>
+            <%= cuttings_line backlog_entry.cuttings %>
+        </h2>
         <div class="description collapse in"><%= markdown backlog_entry.description %></div>
     </div>
     <div class="entry_actions span1">

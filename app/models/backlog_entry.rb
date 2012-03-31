@@ -30,6 +30,18 @@ public
     end
   end
 
+  def conjoined_cuttings
+    conjoins = nil
+    if cut_from
+      if id
+        conjoins = cut_from.cuttings.where("id != ?", id)
+      else
+        conjoins = cut_from.cuttings
+      end 
+    end
+    return conjoins
+  end
+
 private
   def map_size
     self.size_val = size_scale[@size] # TODO shouldn't that be [size]

@@ -1,0 +1,7 @@
+<%= content_tag_for :li, backlog_entry do %>
+    <% if backlog_entry.done %>
+        <%= link_to "##{backlog_entry.id} - #{backlog_entry.title}", backlog_entry, class: "done" %>
+    <% else %>
+        <%= link_to "##{backlog_entry.id} - #{backlog_entry.title}", backlog_entry %>
+    <% end %>
+<% end %>

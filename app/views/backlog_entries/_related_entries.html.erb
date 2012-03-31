@@ -1,0 +1,20 @@
+    <% if @backlog_entry.cut_from %>
+        <h3>Teil von</h3>
+        <ul>
+        <%= render :partial => "backlog_entry_short", locals: { :backlog_entry => @backlog_entry.cut_from }  if @backlog_entry.cut_from %>
+        </ul>
+    <% end %>
+
+    <% unless @backlog_entry.cuttings.empty? %>
+        <h3>Zerlegt in</h3>
+        <ul>
+        <%= render :partial=> "backlog_entry_short", :collection => @backlog_entry.cuttings, :as => :backlog_entry  %>
+        </ul>
+    <% end %>
+
+    <% if @backlog_entry.conjoined_cuttings %>
+        <h3>Weitere Teile</h3>
+        <ul>
+        <%= render :partial=> "backlog_entry_short", :collection => @backlog_entry.conjoined_cuttings, :as => :backlog_entry  %>
+        </ul>
+    <% end %>

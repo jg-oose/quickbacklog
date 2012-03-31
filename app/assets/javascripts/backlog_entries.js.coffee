@@ -10,6 +10,7 @@ jQuery ->
   $('#backlog_entry_category').autocomplete
     source: $('#backlog_entry_category').data('autocomplete-source')
     minLength: 0
+  $('[rel="tooltip"]').tooltip({})
       
 jQuery ->
   $('.expand_desc_link').click ->
