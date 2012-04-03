@@ -18,14 +18,14 @@ class Project < ActiveRecord::Base
   
   def scale_textline=(line)
     scale = {}
-    r = /([[:alnum:]]+)=([[:digit:]]+),? */
+    r = /([[:alnum:]]+)=([[:digit:].]+),? */
     line.scan(r) do |k, v|
-      scale.store k.to_s, v.to_i
+      scale.store k.to_s, v.to_f
     end
 
     if scale.empty?
       line.scan(/([[:digit:]]+),? */) do |v, so_it_doesnt_pass_the_match_obj|
-        scale.store v.to_s, v.to_i
+        scale.store v.to_s, v.to_f
       end
     end
 
