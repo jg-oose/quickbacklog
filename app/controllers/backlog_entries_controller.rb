@@ -47,8 +47,10 @@ class BacklogEntriesController < ApplicationController
   # GET /backlog_entries/new.json
   def new
     @backlog_entry = project_from_session.new_backlog_entry_from_template
-    @backlog_entry.cut_from = BacklogEntry.find(params[:cut_from])
- 
+    if params[:cut_from]
+      @backlog_entry.cut_from = BacklogEntry.find(params[:cut_from])
+    end
+     
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @backlog_entry }
@@ -64,7 +66,7 @@ class BacklogEntriesController < ApplicationController
   # POST /backlog_entries.json
   def create
     @backlog_entry = project_from_session.backlog_entries.build(params[:backlog_entry])
-    @backlog_entry.position = @backlog_entry.cut_from.position
+    @backlog_entry.position = @backlog_entry.cut_from.try(:position)
 
     respond_to do |format|
       if @backlog_entry.save
