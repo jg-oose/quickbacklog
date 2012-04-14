@@ -28,6 +28,20 @@ jQuery ->
       $('.description').collapse('show')
 
 jQuery ->
+  $('#velocity').change ->
+    if $.isNumeric($('#velocity').val())
+      vel = Number($('#velocity').val())
+      sum = 0;
+      $('.backlog_entry').each ->
+        sum += 1
+        if sum >= vel
+          $(this).append($('#waterline'))
+          $('#waterline').show(200)
+          return false
+    else
+      $('#waterline').hide(200)
+    
+
+jQuery ->
   $(window).scrollTop($('.highlight').offset().top - 58)
   $('.highlight').effect('highlight', {color: '#005d92'}, 2000)
-  

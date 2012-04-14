@@ -35,3 +35,23 @@
 <ul id="backlog_entries" data-update-url="<%= sort_backlog_entries_url %>">
     <%= render :partial => @backlog_entries %>
 </ul>
+<div id="waterline" class="row">
+    <div class="span8">
+    <div class="well">
+        This is the waterline! Value: XXX!
+    </div>
+    </div>
+</div>
+
+<%= content_for :sidebar do %>
+    <h4>N&auml;chste Iteration</h4>
+        <fieldset>
+        <div class="control-group">
+        <div class="controls">
+        <div class="input-prepend">
+            <span class="add-on">Vel.</span><input id="velocity" type="text" class="span1"/>
+        </div>
+        </div>
+        </div>
+        </fieldset>
+<% end %>
