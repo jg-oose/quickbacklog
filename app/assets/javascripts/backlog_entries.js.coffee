@@ -6,12 +6,43 @@ jQuery ->
     axis: 'y'
     update: ->
       $.post($(this).data('update-url'), $(this).sortable('serialize'))
+    change: (event, ui) ->
+      n = ui.placeholder.index()
+      nentries = $('.backlog_entry').slice(0, n-1) # refactor from here
+      sum = 0
+      nentries.each ->
+        if entry_size is null
+          entry_size = 0 # TODO proper Handling of unsized entries 
+        sum += $(this).data('size')
+      $('#waterline').find(".well").html("Waterline now at: " + sum)
+
   $('.best_in_place').best_in_place()
+
   $('#backlog_entry_category').autocomplete
     source: $('#backlog_entry_category').data('autocomplete-source')
     minLength: 0
+
   $('[rel="tooltip"]').tooltip({})
-      
+
+  $('#velocity').change ->
+    if $.isNumeric($(this).val())
+      velocity = Number($(this).val())
+      sum = 0;
+      $('.backlog_entry').each ->
+        entry_size = $(this).data('size')
+        if entry_size is null
+          entry_size = 0 # TODO proper Handling of unsized entries 
+        sum += entry_size
+        if sum > velocity
+          $(this).before($('#waterline'))
+          $('#waterline').show(200)
+          $(window).scrollTop($('#waterline').offset().top + 100 - $(window).height())
+          return false
+      # Handle the case of everything included
+      # And handle the case of nothing in
+    else
+      $('#waterline').hide(200)
+    
 jQuery ->
   $('.expand_desc_link').click ->
     desc = $(this).parents('.backlog_entry').find('.description')
@@ -28,26 +59,6 @@ jQuery ->
       $('.description').collapse('show')
 
 jQuery ->
-  $('#velocity').change ->
-    if $.isNumeric($(this).val())
-      velocity = Number($(this).val())
-      sum = 0;
-      $('.backlog_entry').each ->
-        entry_size = $(this).data('size')
-        if entry_size is null
-          entry_size = 0 # TODO proper Handling of unsized entries 
-        sum += entry_size
-        if sum > velocity
-          $(this).prev().append($('#waterline'))
-          $('#waterline').show(200)
-          $(window).scrollTop($('#waterline').offset().top + 100 - $(window).height())
-          return false
-      # Handle the case of everything included
-      # And handle the case of nothing in
-    else
-      $('#waterline').hide(200)
-    
-
-jQuery ->
-  $(window).scrollTop($('.highlight').offset().top - 58)
-  $('.highlight').effect('highlight', {color: '#005d92'}, 2000)
+  if $('.highlight').length != 0
+    $(window).scrollTop($('.highlight').offset().top - 58)
+    $('.highlight').effect('highlight', {color: '#005d92'}, 2000)

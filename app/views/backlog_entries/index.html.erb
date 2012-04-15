@@ -34,14 +34,16 @@
 
 <ul id="backlog_entries" data-update-url="<%= sort_backlog_entries_url %>">
     <%= render :partial => @backlog_entries %>
+    <li id="waterline" style="display: none">
+        <div class="row">
+            <div class="span8">
+            <div class="well">
+                This is the waterline! Value: XXX!
+            </div>
+            </div>
+        </div>
+    </li>
 </ul>
-<div id="waterline" class="row" style="display: none">
-    <div class="span8">
-    <div class="well">
-        This is the waterline! Value: XXX!
-    </div>
-    </div>
-</div>
 
 <%= content_for :sidebar do %>
     <h4>N&auml;chste Iteration</h4>
