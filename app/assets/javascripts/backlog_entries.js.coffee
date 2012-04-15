@@ -7,22 +7,19 @@ jQuery ->
     update: ->
       $.post($(this).data('update-url'), $(this).sortable('serialize'))
     change: (event, ui) ->
-      n = ui.placeholder.index()
-      nentries = $('.backlog_entry').slice(0, n-1) # refactor from here
+      oindex = ui.item.index()
+      nindex = ui.placeholder.index()
+      nindex -= 1 if (nindex > oindex)
+
       sum = 0
+      nentries = $('.backlog_entry').slice(0, nindex) # refactor from here
       nentries.each ->
         if entry_size is null
           entry_size = 0 # TODO proper Handling of unsized entries 
         sum += $(this).data('size')
-      $('#waterline').find(".well").html("Waterline now at: " + sum)
+      
+      $('#velocity').val(sum)
 
-  $('.best_in_place').best_in_place()
-
-  $('#backlog_entry_category').autocomplete
-    source: $('#backlog_entry_category').data('autocomplete-source')
-    minLength: 0
-
-  $('[rel="tooltip"]').tooltip({})
 
   $('#velocity').change ->
     if $.isNumeric($(this).val())
@@ -42,6 +39,16 @@ jQuery ->
       # And handle the case of nothing in
     else
       $('#waterline').hide(200)
+
+
+  $('.best_in_place').best_in_place()
+
+  $('#backlog_entry_category').autocomplete
+    source: $('#backlog_entry_category').data('autocomplete-source')
+    minLength: 0
+
+  $('[rel="tooltip"]').tooltip({})
+
     
 jQuery ->
   $('.expand_desc_link').click ->
