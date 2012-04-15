@@ -29,15 +29,21 @@ jQuery ->
 
 jQuery ->
   $('#velocity').change ->
-    if $.isNumeric($('#velocity').val())
-      vel = Number($('#velocity').val())
+    if $.isNumeric($(this).val())
+      velocity = Number($(this).val())
       sum = 0;
       $('.backlog_entry').each ->
-        sum += 1
-        if sum >= vel
-          $(this).append($('#waterline'))
+        entry_size = $(this).data('size')
+        if entry_size is null
+          entry_size = 0 # TODO proper Handling of unsized entries 
+        sum += entry_size
+        if sum > velocity
+          $(this).prev().append($('#waterline'))
           $('#waterline').show(200)
+          $(window).scrollTop($('#waterline').offset().top + 100 - $(window).height())
           return false
+      # Handle the case of everything included
+      # And handle the case of nothing in
     else
       $('#waterline').hide(200)
     

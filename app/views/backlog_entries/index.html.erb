@@ -35,7 +35,7 @@
 <ul id="backlog_entries" data-update-url="<%= sort_backlog_entries_url %>">
     <%= render :partial => @backlog_entries %>
 </ul>
-<div id="waterline" class="row">
+<div id="waterline" class="row" style="display: none">
     <div class="span8">
     <div class="well">
         This is the waterline! Value: XXX!
@@ -49,7 +49,8 @@
         <div class="control-group">
         <div class="controls">
         <div class="input-prepend">
-            <span class="add-on">Vel.</span><input id="velocity" type="text" class="span1"/>
+            <span class="add-on">Vel.</span><%= text_field_tag :velocity, nil, class: 'span1',
+                data: {scale: @size_scale } %>
         </div>
         </div>
         </div>
