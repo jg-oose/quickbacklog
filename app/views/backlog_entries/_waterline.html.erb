@@ -1,25 +1,9 @@
-    <li id="waterline">
-        <div class="row">
-            <div class="span8">
-            <div class="well">
-                <fieldset>
-                    <div class="control-group">
-                        <div class="controls">
-                        <div class="input-prepend">
-                            <span class="add-on">Vel.</span><%= text_field_tag :velocity, nil, class: 'span1' %>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <%= link_to backlog_entries_path(format: 'pdf', cards: true), :class => "btn" do %>
-                                <i class="icon-th-large" ></i>
-                        <% end %>
-                        <%= link_to backlog_entries_path(format: 'pdf'), :class => "btn" do %>
-                                <i class="icon-print" ></i>
-                        <% end %>
-                    </div>
-                </fieldset>
-            </div>
+<li id="waterline">
+    <div class="row">
+        <div class="span8">
+            <div class="well form-inline input-prepend">
+                <span class="add-on">Waterline</span><%= text_field_tag :velocity, nil, class: 'span1' %>
             </div>
         </div>
-    </li>
+    </div>
+</li>
