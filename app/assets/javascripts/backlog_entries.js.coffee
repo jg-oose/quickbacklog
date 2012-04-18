@@ -2,23 +2,37 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
+  update_waterline = (event, ui) ->
+    if ui.item.attr('id') is 'waterline'
+      water_idx = ui.item.index()
+      place_idx = ui.placeholder.index()
+      idx = place_idx
+      idx -= 1 if (place_idx > water_idx)
+    else
+      idx = $('#waterline').index()
+  
+    sum = 0
+    entries = $('.backlog_entry').slice(0, idx)
+    entries.each -> # TODO proper Handling of unsized entries 
+      if $(this).hasClass('ui-sortable-placeholder')
+        size = ui.item.data('size') # size of item being moved
+      else if $(this).hasClass('ui-sortable-helper')
+        size = 0 #item being moved no longer counts
+      else
+        size = $(this).data('size')
+  
+      sum += size
+    
+    $('#velocity').val(sum)
+    $('#waterline').find('.control-group').removeClass('error')
+
   $('#backlog_entries').sortable
     axis: 'y'
-    update: ->
-      $.post($(this).data('update-url'), $(this).sortable('serialize'))
-    change: (event, ui) ->
-      oindex = ui.item.index()
-      nindex = ui.placeholder.index()
-      nindex -= 1 if (nindex > oindex)
-
-      sum = 0
-      nentries = $('.backlog_entry').slice(0, nindex) # refactor from here
-      nentries.each ->
-        if entry_size is null
-          entry_size = 0 # TODO proper Handling of unsized entries 
-        sum += $(this).data('size')
-      
-      $('#velocity').val(sum)
+    update: (event, ui) ->
+      console.log ui
+      if ui.item.attr('id') isnt 'waterline'
+        $.post($(this).data('update-url'), $(this).sortable('serialize'))
+    change: update_waterline
 
 
   $('#velocity').change ->
@@ -37,8 +51,9 @@ jQuery ->
           return false
       # Handle the case of everything included
       # And handle the case of nothing in
+      $('#waterline').find('.control-group').removeClass('error')
     else
-      $('#waterline').hide(200)
+      $('#waterline').find('.control-group').addClass('error')
 
 
   $('.best_in_place').best_in_place()
