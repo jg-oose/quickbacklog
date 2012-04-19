@@ -1,10 +1,10 @@
 <li id="waterline">
     <div class="row">
         <div class="span8">
-            <div class="well form-inline input-prepend">
-                <div class="control-group">
-                    <span class="add-on">Waterline</span><%= text_field_tag :velocity, nil, class: 'span1' %>
-                </div>
+            <div class="well form-inline input-append">
+                <span class="control-group">
+                    <%= text_field_tag :capacity %><span id="sum_above_line" class="add-on">(--)</span>
+                </span>
             </div>
         </div>
     </div>
