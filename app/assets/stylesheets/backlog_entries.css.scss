@@ -15,10 +15,19 @@
     padding-top: 1px;
     .well {
       padding-top: 3px;
-      padding-bottom: 3px;
+      padding-bottom: 0px;
+      padding-left: 8px;
+      padding-right: 8px;
+      background-color: rgb(183,194,204); 
+    }
+    .input-prepend {
+      margin-bottom: 0px;
     }
     #capacity, #sum_above_line {
       width: 24px;
+      margin-bottom: 0px;
+      padding-top: 1px;
+      padding-bottom: 0px;
     }
   }
 
