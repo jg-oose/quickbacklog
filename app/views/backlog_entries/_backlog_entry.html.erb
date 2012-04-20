@@ -18,7 +18,7 @@
             <%= conjoined_line backlog_entry.conjoined_cuttings %>
             <%= cuttings_line backlog_entry.cuttings %>
         </h2>
-        <div class="description collapse in"><%= markdown backlog_entry.description %></div>
+        <div class="description collapse <%= 'in' if @expand_entries == 'show' %>"><%= markdown backlog_entry.description %></div>
     </div>
     <div class="entry_actions span1">
           <%= link_to new_backlog_entry_path(cut_from: backlog_entry.id) do %><i class="icon-plus-sign"></i><% end %>

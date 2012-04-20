@@ -20,6 +20,7 @@ class BacklogEntriesController < ApplicationController
     end
     
     @backlog_entries = project_from_session.backlog_entries.where(:done => done_is).order("position")
+    @expand_entries = cookies[:expand_all] || 'show'
 
     respond_to do |format|
       format.html # index.html.erb

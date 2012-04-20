@@ -2,16 +2,19 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
+  
   class Waterline
     constructor: ->
-      @capacity = 0 # TODO get from somewhere
+      @capacity = $.cookie('capacity') or 0 # TODO get from somewhere
       @sum_above = 0
-      this.setCapacity(@capacity)
+      this.moveTo(@capacity)
+      $('#waterline').show()
 
     setCapacity: (new_capacity) ->
       @capacity = new_capacity
       $('#capacity').val(@capacity)
       # TODO ajax-call to save in Projekt
+      $.cookie('capacity', new_capacity, { expires: 7 });
       
     setSumAbove: (new_sum) ->
       @sum_above = new_sum
@@ -99,6 +102,17 @@ jQuery ->
 
   $('[rel="tooltip"]').tooltip({})
 
+  if $.cookie('expand_all') is null or $.cookie('expand_all') is 'show'
+    $('#expand_all_btn').button('toggle')  
+
+  $('#expand_all_btn').click ->
+    if $(this).hasClass('active')
+      $('.description.in').collapse('hide')
+      $.cookie('expand_all', 'hide', { expires: 7 });
+    else
+      $('.description').collapse('show')
+      $.cookie('expand_all', 'show', { expires: 7 });
+
   $('.expand_desc_link').click ->
     desc = $(this).parents('.backlog_entry').find('.description')
     if desc.hasClass('in')
@@ -106,13 +120,8 @@ jQuery ->
     else
       desc.collapse('show')
     return false
-  $('#expand_all_btn').button('toggle')
-  $('#expand_all_btn').click ->
-    if $(this).hasClass('active')
-      $('.description.in').collapse('hide')
-    else
-      $('.description').collapse('show')
 
+    
 jQuery ->
   if $('.highlight').length != 0
     $(window).scrollTop($('.highlight').offset().top - 58)
