@@ -5,16 +5,15 @@ jQuery ->
   
   class Waterline
     constructor: ->
-      @capacity = $.cookie('capacity') or 0 # TODO get from somewhere
+      @capacity = $('#capacity').val()
       @sum_above = 0
-      this.moveTo(@capacity)
+      this.moveLine()
       $('#waterline').show()
 
     setCapacity: (new_capacity) ->
       @capacity = new_capacity
       $('#capacity').val(@capacity)
-      # TODO ajax-call to save in Projekt
-      $.cookie('capacity', new_capacity, { expires: 7 });
+      $.post($('#waterline').data('update-url'), "capacity="+@capacity)
       
     setSumAbove: (new_sum) ->
       @sum_above = new_sum
@@ -26,7 +25,9 @@ jQuery ->
 
     moveTo: (new_capacity) ->
       this.setCapacity(new_capacity)
-
+      this.moveLine()
+      
+    moveLine: ->
       sum = 0
       first_out_entry = null
       $('.backlog_entry').each (i, entry) =>
@@ -70,10 +71,7 @@ jQuery ->
       if ui.item.attr('id') is 'waterline'
         this.setCapacity(sum)
 
-      this.setSumAbove(sum)
-
-      #$('#waterline').find('.control-group').removeClass('error')
-  
+      this.setSumAbove(sum)  
   
   the_waterline = new Waterline()
 

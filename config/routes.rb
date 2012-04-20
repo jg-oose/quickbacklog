@@ -4,6 +4,7 @@ QuickBacklog::Application.routes.draw do
       collection { post :sort }
     end
     resource :project, :except => :destroy do
+      post :capacity
     end
   end
   

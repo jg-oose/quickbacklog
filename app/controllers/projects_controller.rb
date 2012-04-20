@@ -69,4 +69,13 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def capacity
+    logger.info(params[:capacity])
+    @project = project_from_session
+    @project.iteration_capacity = params[:capacity]
+    @project.save
+
+    render nothing: true
+  end
+
 end

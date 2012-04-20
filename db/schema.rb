@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120329062213) do
+ActiveRecord::Schema.define(:version => 20120420192147) do
 
   create_table "backlog_entries", :force => true do |t|
     t.string   "title"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120329062213) do
     t.text   "vision"
     t.text   "entry_template_text"
     t.text   "size_scale"
+    t.float  "iteration_capacity"
   end
 
 end
