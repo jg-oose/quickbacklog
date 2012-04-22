@@ -3,13 +3,13 @@
         <div class="span8">
             <div class="well">
                 <span class="btn-group" style="float: right">
-                    <%= link_to "#", :class => "btn btn-mini disabled" do %>
+                    <%= link_to "#", id: "tag_entries_above", class: "btn btn-mini disabled" do %>
                             <i class="icon-chevron-up" ></i><i class="icon-tag" ></i>
                     <% end %>
-                    <%= link_to backlog_entries_path(format: 'pdf', cards: true), :class => "btn btn-mini disabled" do %>
+                    <%= link_to backlog_entries_path(format: 'pdf', cards: true, limit: ''), id: "print_cards_above", class: "btn btn-mini" do %>
                             <i class="icon-chevron-up" ></i><i class="icon-th-large" ></i>
                     <% end %>
-                    <%= link_to backlog_entries_path(format: 'pdf'), :class => "btn btn-mini disabled" do %>
+                    <%= link_to backlog_entries_path(format: 'pdf', limit: ''), id: "print_list_above", class: "btn btn-mini" do %>
                             <i class="icon-chevron-up" ></i><i class="icon-print" ></i>
                     <% end %>
                 </span>

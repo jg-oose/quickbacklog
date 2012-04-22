@@ -19,7 +19,7 @@ class BacklogEntriesController < ApplicationController
       @ui_btn_state[:open] = "disabled"
     end
     
-    @backlog_entries = project_from_session.backlog_entries.where(:done => done_is).order("position")
+    @backlog_entries = project_from_session.backlog_entries.limit(params[:limit]).where(:done => done_is).order("position")
     @expand_entries = cookies[:expand_all] || 'show'
     @capacity = project_from_session.iteration_capacity
 

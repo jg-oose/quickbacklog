@@ -90,13 +90,16 @@ jQuery ->
     change: (event, ui) ->
       the_waterline.beingMoved(event, ui)
 
+  $('#print_cards_above').click (event) ->
+    event.preventDefault()
+    window.open $(this).attr('href') + $('#waterline').index()
+
+  $('#print_list_above').click (event) ->
+    event.preventDefault()
+    window.open $(this).attr('href') + $('#waterline').index()
 
 jQuery ->
   $('.best_in_place').best_in_place()
-
-  $('#backlog_entry_category').autocomplete
-    source: $('#backlog_entry_category').data('autocomplete-source')
-    minLength: 0
 
   $('[rel="tooltip"]').tooltip({})
 
@@ -119,8 +122,10 @@ jQuery ->
       desc.collapse('show')
     return false
 
-    
-jQuery ->
+  $('#backlog_entry_category').autocomplete
+    source: $('#backlog_entry_category').data('autocomplete-source')
+    minLength: 0
+
   if $('.highlight').length != 0
     $(window).scrollTop($('.highlight').offset().top - 58)
     $('.highlight').effect('highlight', {color: '#005d92'}, 2000)
