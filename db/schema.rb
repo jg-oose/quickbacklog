@@ -11,19 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420192147) do
+ActiveRecord::Schema.define(:version => 20120424201817) do
 
   create_table "backlog_entries", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.string   "category"
-    t.integer  "size_val"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "position"
     t.boolean  "done"
     t.integer  "project_id"
     t.integer  "cut_from_id"
+    t.float    "size_val"
   end
 
   create_table "projects", :force => true do |t|
