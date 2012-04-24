@@ -73,7 +73,8 @@ jQuery ->
 
       this.setSumAbove(sum)  
   
-  the_waterline = new Waterline()
+  if $('#waterline').length
+    the_waterline = new Waterline()
 
   $('#capacity').change ->
     if $.isNumeric($(this).val())
